@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=$1 python -u main.py --batch_size 16 --imsize 512 --arch FaceParseNet50
