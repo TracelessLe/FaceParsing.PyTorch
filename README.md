@@ -22,7 +22,7 @@ A Pytorch implementation face parsing model trained by CelebAMask-HQ, based on [
 
 
 ## Well-trained model
-* The model can be downloaded [here](https://drive.google.com/file/d/1neFVTZCWZcCeIoYA7V3i1Kk3DqaK4iei/view?usp=sharing).
+* The model can be downloaded [here](https://drive.google.com/file/d/1neFVTZCWZcCeIoYA7V3i1Kk3DqaK4iei/view?usp=sharing) (96M).
 * The model (`#num.pth`) should be put under `./models/FaceParseNet50/`
 * Mask labels are defined as following:
 
