@@ -84,12 +84,10 @@ def generate_label(inputs, imsize, class_num=19):
     return label_batch
 
 def generate_label_plain(inputs, imsize, class_num=19):
-    '''Tensor after optimized...'''
-
     inputs = F.interpolate(input=inputs, size=(imsize, imsize),
                            mode='bilinear', align_corners=True)
     pred_batch = torch.argmax(inputs, dim=1)
-    label_batch = torch.Tensor([p.numpy() for p in pred_batch])
+    label_batch = [p.cpu().numpy() for p in pred_batch]
     return label_batch
 
 def generate_compare_results(images, labels, preds, imsize, class_num=19):

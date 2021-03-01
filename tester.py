@@ -12,6 +12,7 @@ from networks import get_model
 from utils import *
 # from PIL import Image
 import time
+import cv2
 from metrics import SegMetric
 
 
@@ -99,11 +100,11 @@ class Tester(object):
                 oneHot_size = (size[0], self.classes, size[1], size[2])
                 labels_real = torch.cuda.FloatTensor(torch.Size(oneHot_size)).zero_()
                 labels_real = labels_real.scatter_(1, labels.data.long().cuda(), 1.0)
-                # labels_predict_plain = generate_label_plain(outputs)
+                labels_predict_plain = generate_label_plain(outputs, self.imsize)
                 compare_predict_color = generate_compare_results(images, labels_real, outputs, self.imsize)
                 for k in range(self.batch_size):
                     # save_image(labels_predict_color[k], osp.join(self.test_color_label_path, str(index * self.batch_size + k) +'.png'))
-                    # cv2.imwrite(osp.join(self.test_pred_label_path, str(index * self.batch_size + k) +'.png'), labels_predict_plain[k])
+                    cv2.imwrite(osp.join(self.test_pred_label_path, str(index * self.batch_size + k) +'.png'), labels_predict_plain[k])
                     save_image(compare_predict_color[k], osp.join(self.test_color_label_path, str(index * self.batch_size + k) +'.png'))
 
         print("----------------- Runtime Performance ------------------")
